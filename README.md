@@ -1,7 +1,7 @@
 ## name of project
 ### Code Badges
-build status icon
-coverage status icon
+[![Build Status](https://travis-ci.org/bchiatt/redis-address-book.svg)](https://travis-ci.org/bchiatt/redis-address-book)
+[![Coverage Status](https://coveralls.io/repos/bchiatt/redis-address-book/badge.png)](https://coveralls.io/r/bchiatt/redis-address-book)
 
 ### About
 write a description about your project
