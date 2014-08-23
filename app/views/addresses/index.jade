@@ -1,0 +1,21 @@
+extends ../shared/template
+block content
+  h2 Addresses
+  table.table.table-hover
+    thead
+      tr
+        th Name
+        th Twitter
+        th Facebook
+        th Color
+    tbody
+      each address in addresses
+        tr
+          td= address.name
+          td= address.twitter
+          td= address.facebook
+          td(style='background-color:#{address.color}')= address.color
+
+block scripts
+  script(src='/js/user/home.js')
+

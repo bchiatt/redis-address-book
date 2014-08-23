@@ -10,10 +10,22 @@ exports.login = function(req, res){
   res.render('users/login');
 };
 
+exports.logout = function(req, res){
+  req.session.destroy(function(){
+    res.redirect('/');
+  });
+};
+
 exports.authenticate = function(req, res){
   User.authenticate(req.body, function(user){
     if(user){
-      res.redirect('/');
+      req.session.regenerate(function(){
+        // everything written to session get saved to Redis. Only the session ID is saved to cookie.
+        req.session.userId = user._id;
+        req.session.save(function(){
+          res.redirect('/');
+        });
+      });
     }else{
       res.redirect('/login');
     }
@@ -23,11 +35,7 @@ exports.authenticate = function(req, res){
 exports.create = function(req, res){
   User.register(req.body, function(err, user){
     if(user){
-      // everything written to session get saved to Redis. Only the session ID is saved to cookie.
-      req.session.userId = user._id;
-      req.session.save(function(){
-        res.redirect('/');
-      });
+      res.redirect('/');
     }else{
       res.redirect('/register');
     }

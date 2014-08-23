@@ -1,0 +1,23 @@
+extends ../shared/template
+block content
+  h2 Add New Adress
+  .row
+    .col-xs-3
+      form(role='form', method='post', action='/addresses')
+        .form-group
+          label(for='name') Name
+          input.form-control#name(type='text', name='name', autofocus=true)
+        .form-group
+          label(for='color') Color
+          input.form-control#color(type='color', name='color')
+        .form-group
+          label(for='twitter') Twitter
+          input.form-control#twitter(type='text', name='twitter')
+        .form-group
+          label(for='facebook') Facebook
+          input.form-control#facebook(type='text', name='facebook')
+        button.btn.btn-primary(type='submit') Add Adresses
+    .col-xs-9
+
+    block scripts
+
